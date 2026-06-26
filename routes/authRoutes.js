@@ -27,7 +27,7 @@ router.get('/auth/github', passport.authenticate('github', { scope: ['user:email
 router.post('/logout', logout);
 
 router.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: 'http://localhost:5000/login.html' }),
+    passport.authenticate('github', { failureRedirect: `${process.env.FRONTEND_URL}/login.html` }),
     (req, res) => {
         const token = jwt.sign(
             { userId: req.user._id },
@@ -36,11 +36,11 @@ router.get('/auth/github/callback',
         );
         res.cookie('token', token, {
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
             maxAge: 60 * 60 * 1000
         });
-        res.redirect('http://localhost:5000/profile.html');
+        res.redirect(`${process.env.FRONTEND_URL}/profile.html`);
     }
 );
 
