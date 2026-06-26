@@ -26,8 +26,8 @@ const login = async (req,res,next) =>{
     const {email,password} = req.body;
     try {
         const user = await User.findOne({email});
-        if(!user){
-            return res.status(401).json({message: 'Invalid credentials'});
+        if (!user) {
+            return res.status(400).json({ message: 'User does not exist' });
         }
         if (user.authProvider === 'github') {
             return res.status(400).json({ message: 'This account uses GitHub login. Please use the GitHub button.' });
