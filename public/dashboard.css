@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f0f2ff;
+    min-height: 100vh;
+    padding: 40px 16px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #6c63ff;
+    font-size: 2rem;
+}
+
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 32px;
+}
+
+.form-card input,
+.form-card textarea {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+    border-color: #6c63ff;
+}
+
+.form-card textarea {
+    height: 80px;
+    resize: none;
+}
+
+.btn-primary {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #574fd6;
+}
+
+.board {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    min-width: 280px;
+}
+
+.column h2 {
+    color: #444;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ddd;
+}
+
+.todo-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-left: 5px solid #6c63ff;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.todo-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 4px;
+    accent-color: #6c63ff;
+    cursor: pointer;
+}
+
+.todo-card .card-buttons {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding-left: 30px;
+}
+
+.column:last-child .todo-card {
+    border-left-color: #4caf50;
+}
+
+.btn-edit {
+    background-color: #e8f0fe;
+    color: #4a6cf7;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #d0e1fd;
+}
+
+.btn-delete {
+    background-color: #fde8e8;
+    color: #e53e3e;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #fbd0d0;
+}
+
+#modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+
+.modal-box h2 {
+    color: #2d2d2d;
+    margin-bottom: 16px;
+}
+
+.modal-box input,
+.modal-box textarea {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.modal-box input:focus,
+.modal-box textarea:focus {
+    border-color: #6c63ff;
+}
+
+.modal-box textarea {
+    height: 100px;
+    resize: none;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #555;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    flex: 1;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.modal-buttons .btn-primary {
+    flex: 1;
+}
+
+.form-card input[type="date"],
+.form-card select {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+    transition: border 0.2s;
+}
+
+.form-card input[type="date"]:focus,
+.form-card select:focus {
+    border-color: #6c63ff;
+}
+
+.todo-card span {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.todo-card span:nth-of-type(2) {
+    background: #e0f7e9;
+    color: #2e7d32; 
+}
+
+.modal-box input[type="date"],
+.modal-box select {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+}
+
+.priority-low {
+    background: #e0f7e9 !important;
+    color: #2e7d32 !important;
+}
+.priority-medium {
+    background: #fff4e0 !important;
+    color: #e6a100 !important;
+}
+.priority-high {
+    background: #fde8e8 !important;
+    color: #e53e3e !important;
+}
+
+.card-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.card-body{
+    display: flex;
+    width: 100%;
+    gap : 10px;
+    align-items: flex-start;
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-content p {
+  white-space: pre-line;
+}
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}

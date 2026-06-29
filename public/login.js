@@ -55,8 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 return;
             }
-
-            window.location.href = 'profile.html';
+            if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            window.location.href = 'dashboard.html';
 
         } catch (err) {
             showError('Network error. Please try again.');

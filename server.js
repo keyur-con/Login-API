@@ -39,6 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const authRoutes = require('./routes/authRoutes');
+const todoRoutes = require('./routes/todoRoutes');
 
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, 
@@ -53,6 +54,7 @@ app.use('/forgetpassword', authLimiter);
 app.use('/verifyotp', authLimiter);
 
 app.use(authRoutes);
+app.use("/api/todos", todoRoutes);
 app.use(errorHandler);
 
 mongoose.connect(process.env.MONGO_URI)
