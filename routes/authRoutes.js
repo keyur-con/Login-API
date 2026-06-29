@@ -40,7 +40,7 @@ router.get('/auth/github/callback',
             sameSite: 'lax',
             maxAge: 60 * 60 * 1000
         });
-        res.redirect(`${process.env.FRONTEND_URL}/profile.html`);
+        res.redirect(`${process.env.FRONTEND_URL}/dashboard.html`);
     }
 );
 
